@@ -1,5 +1,4 @@
 "use server";
-import Comment from "./comment";
 
 const fetchProduct = () => {
   return new Promise((resolve) => {
@@ -21,7 +20,6 @@ export default async function ProductItem() {
     <div>
       {products &&
         products.map((item: any) => <h3 key={item.id}>{item.name}</h3>)}
-      <Comment></Comment>
     </div>
   );
 }

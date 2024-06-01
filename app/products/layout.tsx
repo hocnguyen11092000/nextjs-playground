@@ -1,4 +1,5 @@
-import React from "react";
+import React, { Suspense } from "react";
+import Page from "./page";
 
 export default function ProductLayout({
   children,
@@ -6,9 +7,11 @@ export default function ProductLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className="product-layout">
-      <h3>products layout</h3>
-      {children}
+    <div>
+      <h3 className="mb-2">products layout</h3>
+      <Suspense fallback="product loading...">
+        <Page></Page>
+      </Suspense>
     </div>
   );
 }
