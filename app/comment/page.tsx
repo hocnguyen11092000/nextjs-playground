@@ -15,7 +15,7 @@ const fetchComment = () => {
   });
 };
 
-export default function Comment() {
+export default function Page() {
   const [comments, setComments] = useState<any>();
 
   useEffect(() => {
@@ -33,7 +33,11 @@ export default function Comment() {
       {comments ? (
         <div>
           {comments.map((item: any) => {
-            return <li key={item}>{item.id}</li>;
+            return (
+              <li className="item" key={item.id}>
+                {item.id}
+              </li>
+            );
           })}
         </div>
       ) : (
