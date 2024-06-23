@@ -1,13 +1,11 @@
-import Image from "next/image";
-import { Locale } from "./i18n-config";
+import { createTranslation } from "@/i18n/server";
 
-export default async function Home({
-  params: { lang },
-}: {
-  params: { lang: Locale };
-}) {
-  // const dictionary = await getDictionary(lang);
-  return <div></div>;
+export default async function Home() {
+  const { t } = await createTranslation("home");
 
-  // return <div>{dictionary.products.title}</div>;
+  return (
+    <div>
+      <h1>{t("greeting")}</h1>
+    </div>
+  );
 }

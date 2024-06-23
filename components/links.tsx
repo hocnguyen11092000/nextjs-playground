@@ -2,7 +2,7 @@
 
 import { usePathname } from "next/navigation";
 import Link from "next/link";
-import { Locale } from "../i18n-config";
+import { Locale } from "../app/i18n-config";
 
 export function Links(props: any) {
   const pathname = usePathname();

@@ -2,7 +2,10 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { i18n, Locale } from "./i18n-config";
-import { Links } from "./components/links";
+import { Links } from "../components/links";
+import { getLocale } from "@/i18n/server";
+import { LocaleProvider } from "@/hooks/locale-provider";
+import ChangeLocale from "@/components/ChangeLocale";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -17,18 +20,18 @@ export async function generateStaticParams() {
 
 export default function RootLayout({
   children,
-  params,
 }: Readonly<{
   children: React.ReactNode;
-  params: { lang: Locale };
 }>) {
+  const locale = getLocale();
+
   return (
-    <html lang={params.lang} suppressHydrationWarning>
+    <html lang={locale} suppressHydrationWarning>
       <body className={inter.className}>
-        <div className="p-8">
-          <Links lang={params.lang}></Links>
+        <LocaleProvider value={locale}>
+          <ChangeLocale />
           {children}
-        </div>
+        </LocaleProvider>
       </body>
     </html>
   );
